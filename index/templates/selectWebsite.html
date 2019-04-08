@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择要爬取的网页</title>
+<style>
+     p{
+        width:100%;
+        font-size:40px;
+        font-weight: 500;
+        text-align: center;
+    }
+    div{
+         width: 100%;height: 500px;
+     }
+    form{
+        position: relative;
+        margin: 0 48%;
+        width: 250px;height: 400px;
+    }
+    label{
+        position: relative;
+        margin-top: 20px;
+        width: 150px;height: 30px;
+        display: inline;
+    }
+    #proxylabel{
+        margin-left: -65px;
+    }
+    select{
+        outline: none;
+        margin-top: 20px;
+        width: 100px;height: 30px;
+        font-size: 16px;
+    }
+    input{
+        outline: none;
+        position: relative;
+        margin: 20px 25%;
+        width: 80px;height: 30px;
+        font-size: 14px;
+        background-color: cornflowerblue;
+        border-radius: 5px;
+    }
+
+</style>
+</head>
+<body>
+    <p>请选择你要爬取的网页</p>
+    <div>
+        <form action="." method="post">
+            <label>网站：</label>
+            <select class="selection" id="website">
+                <optgroup label="请选择">
+                    <option>自如网站</option>
+                    <option>链家网站</option>
+                </optgroup>
+            </select>
+            <br/>
+            <label id="proxylabel">是否使用代理：</label>
+            <select class="selection" id="proxy">
+                <optgroup label="请选择">
+                    <option>是</option>
+                    <option>否</option>
+                </optgroup>
+            </select>
+            <input type="submit" value="确认"/>
+        </form>
+
+    </div>
+</body>
+</html>

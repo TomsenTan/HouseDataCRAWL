@@ -1,0 +1,40 @@
+# -*-coding:utf-8-*-
+# @Author:Thomson
+# @Date:2019-03-22
+
+### 自如 ###
+# 广州地区房源
+class GZSecHandHouseKey(object):
+    ZIROOM_GUANGZHOU_PAY_1500_URL = 'http://gz.ziroom.com/z/nl/z2-r1.html'  # 页码在url后加  ？p=num
+    ZIROOM_GUANGZHOU_PAY_1500_TO_1800_URL = 'http://gz.ziroom.com/z/nl/z2-r2.html'
+    ZIROOM_GUANGZHOU_PAY_1800_TO_2100_URL = 'http://gz.ziroom.com/z/nl/z2-r3.html'
+    ZIROOM_GUANGZHOU_PAY_2100_TO_2500_URL = 'http://gz.ziroom.com/z/nl/z2-r4.html'
+    ZIROOM_GUANGZHOU_PAY_2500_TO_3000_URL = 'http://gz.ziroom.com/z/nl/z2-r5.html'
+    ZIROOM_GUANGZHOU_PAY_3000_URL = 'http://gz.ziroom.com/z/nl/z2-r6.html'
+
+    ZIROOM_GUANGZHOU_PAY_1500_PAGNUMS = 50
+    ZIROOM_GUANGZHOU_PAY_1500_TO_1800_PAGNUMS = 50
+    ZIROOM_GUANGZHOU_PAY_1800_TO_2100_PAGNUMS = 50
+    ZIROOM_GUANGZHOU_PAY_2100_TO_2500_PAGNUMS = 34
+    ZIROOM_GUANGZHOU_PAY_2500_TO_3000_PAGNUMS = 10
+    ZIROOM_GUANGZHOU_PAY_3000_PAGNUMS = 4
+
+
+# 深圳地区房源
+
+
+# 北京地区房源
+
+
+# 上海地区房源
+
+
+# 杭州地区房源
+
+
+# 武汉地区房源
+
+
+
+
+### 链家 ###
