@@ -60,14 +60,15 @@ class RedisData(object):
         return self._hexgetall(name)
 
 
-redissample = RedisData('ensureCrawl:IP:')
 
-ensureMes = {
-    'website': 'zr',
-    'proxy': 1,
-    'timestamp': str(datetime.now())
-}
+# redissample = RedisData('ensureCrawl:IP:')
+#
+# ensureMes = {
+#     'website': 'zr',
+#     'proxy': 1,
+#     'timestamp': str(datetime.now())
+# }
 
 # redissample.HSET('127.0.0.1', '', ensureMes)
-value = redissample.HGETALL('ensureCrawl:IP:127.0.0.1')
-print(value)
+# value = redissample.HGETALL('ensureCrawl:IP:127.0.0.1')
+# print(value)

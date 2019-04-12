@@ -1,6 +1,6 @@
 # -*- coding:UTF-8 -*-
 import mongoengine
-from SSHLog.MLog import mlog as MgLog
+from SHHLog.MLog import mlog as MgLog
 
 
 class MongoEngine(object):
