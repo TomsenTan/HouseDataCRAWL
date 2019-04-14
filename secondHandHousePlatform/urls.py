@@ -27,7 +27,8 @@ urlpatterns = [
     # path('index1/',index_views1.index_views),   #模拟首页地址匹配
     # path('index/login',index_views.login_views)
 
-    path('index/',include('index.urls',)),  #路由分发
-    path('music/',include('musics.urls',)),
-    # path('new/',include('news.urls',)),
+    # 路由分发
+    path('index/', include('index.urls',)),
+    path('users/', include('users.urls',)),
+    path('website/', include('website.urls',)),
 ]

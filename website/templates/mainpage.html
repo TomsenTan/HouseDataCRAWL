@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>租房信息平台</title>
+<style>
+    #submitmes{
+        width: 100%;height: 110px;
+    }
+    #content{
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        clear: both;
+{#        border: 1px red solid;#}
+    }
+    .detial{
+        height: 160px; width: 100%;
+        margin-top: 20px;
+        border-bottom: 1px grey solid;
+    }
+    #welcome{
+        width:100%;
+        font-size:30px;
+        font-weight: 500;
+        text-align: center;
+    }
+    #selectspan{
+        font-weight: 700;
+    }
+    form{
+        position: relative;
+        margin: 0 48%;
+        width: 250px;height: 400px;
+    }
+    ul{
+        margin-left: -350px;
+        width: 550px;height: 50px;
+{#        border: 1px red solid;#}
+    }
+    li{
+        text-align: center;vertical-align: middle;
+        list-style: none;
+        width: 250px; height: 50px;
+{#        border: 1px green solid;#}
+        float: left;
+    }
+    label{
+        vertical-align: middle;
+        position: relative;
+        width: 40px;height: 30px;
+        display: inline;
+        font-size: 15px; font-weight: 600;
+    }
+    select{
+        vertical-align: middle;
+        outline: none;
+        width: 100px;height: 30px;
+        font-size: 16px;
+    }
+    input{
+        outline: none;
+{#        position: relative;#}
+        margin-left: 50px;
+        width: 80px;height: 30px;
+        font-size: 15px;font-weight: 500;color: white;
+        background-color: orange;
+        border: 0;border-radius: 5px;
+    }
+
+
+{# 房源详细信息  #}
+    #item{
+        width: 100%;height: 20px;
+        border-bottom: 1px grey solid;
+        font-size: 16px;
+        padding-bottom: 8px;
+    }
+    #detail_left{
+        position: relative;
+        height: 150px;width: 600px;
+        font-size: 14px;
+        text-align: left;
+{#        border: 1px red solid;#}
+        border-right: 1px grey solid;
+{#        display: inline-block;#}
+        float: left;
+    }
+    #detail_left span{
+        display: block;
+        width: 200px; height: 22px;
+{#        border: 1px red solid;#}
+        margin-top: -10px;margin-left: 50px;
+        color: #555555;
+    }
+    #houseName{
+        font-size: 20px;font-weight: 500;
+        text-align: left;
+    }
+    #detail_right{
+        height: 150px;width: 400px;
+{#        border: 1px red solid;#}
+{#        display: inline-block;#}
+        float: left;
+    }
+    #detail_right p{
+        width: 100px;height: 35px;
+        background-color: orange;
+        border: 0;border-radius: 3px;
+        color: white;text-align: center;
+        margin: 0 auto;margin-top: 50px;
+    }
+    #detail_right span{
+        width: 100px;height: 28px;
+        font-size: 15px;
+        line-height: 30px;text-align: center;
+    }
+    #detail_right span a{
+        text-decoration: none; color: white;
+    }
+</style>
+
+</head>
+<body>
+    <p id="welcome">欢迎浏览本网站</p>
+    <span id="selectspan">请选择你的筛选项</span>
+    <div id="submitmes">
+        <form action="" method="post" enctype="application/x-www-form-urlencoded">{% csrf_token %}
+            <ul class="selection">
+                <li id="select1">
+                    <label>网站：</label>
+                    <select  id="selectwebsite" name="website">
+                        <optgroup label="请选择">
+                            <option>自如网站</option>
+                            <option>链家网站</option>
+                        </optgroup>
+                    </select>
+                </li>
+                <li id="selcet2">
+                    <label id="city">城市：</label>
+                    <select  id="selectcity" name="city">
+                        <optgroup label="请选择">
+                            <option>广州</option>
+                            <option>上海</option>
+                            <option>北京</option>
+                            <option>深圳</option>
+                            <option>杭州</option>
+                        </optgroup>
+                    </select>
+                </li>
+                <li id="selcet3">
+                    <label id="district">地区：</label>
+                    <select  id="selectdistrict" name="district">
+                        <optgroup label="请选择">
+                            <option>天河</option>
+                            <option>海珠</option>
+                            <option>越秀</option>
+                            <option>荔湾</option>
+                            <option>番禺</option>
+                            <option>黄埔</option>
+                            <option>白云</option>
+                            <option>增城</option>
+                            <option>花都</option>
+                        </optgroup>
+                    </select>
+                </li>
+            </ul>
+            <input type="submit" value="确认"/>
+        </form>
+    </div>
+    {% if city %}
+        <p id="item">首页 > <span style="color:orange;">{{ city }}</span></p>
+    {% else %}
+        <p id="item">首页 ></p>
+    {% endif %}
+    {% if content %}
+    <div id="content">
+        {% for house in content %}
+        <p id="houseName">{{ house.house_name }}</p>
+        <div class="detial">
+            <div id="detail_left" >
+                <span id="region" class="detial_left_first">房源地区：{{ city }}-{{ house.house_region.district }}-{{ house.house_region.community }}</span><br/>
+                <span id="area">房源面积：{{ house.house_area }}平方</span><br/>
+                <span id="floor">房源楼层：{{ house.house_floor }}层</span><br/>
+    {#            <span id="layout">房源布局：{{ house.house_layout }}</span><br/>#}
+    {#            <span id="subway">房源地铁线：{{ house.house_subway.line }}号线-{{ house.house_subway.distance }}米</span><br/>#}
+                <span id="pay">房源价格：{{ house.house_pay }}</span><br/>
+    {#            <span id="furniture">房源配套：{{ house.house_furnitures }}</span><br/>#}
+            </div>
+            <div id="detail_right">
+                <p id="moredetail">
+                    <span><a href="#">查看更多信息</a></span>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% elif default %}
+    <div id="content">
+        {% for house in default %}
+        <p id="houseName">{{ house.house_name }}</p>
+        <div class="detial">
+            <div id="detail_left" >
+                <span id="region" class="detial_left_first">房源地区：{{ city }}-{{ house.house_region.district }}-{{ house.house_region.community }}</span><br/>
+                <span id="area">房源面积：{{ house.house_area }}平方</span><br/>
+                <span id="floor">房源楼层：{{ house.house_floor }}层</span><br/>
+    {#            <span id="layout">房源布局：{{ house.house_layout }}</span><br/>#}
+    {#            <span id="subway">房源地铁线：{{ house.house_subway.line }}号线-{{ house.house_subway.distance }}米</span><br/>#}
+                <span id="pay">房源价格：{{ house.house_pay }}</span><br/>
+    {#            <span id="furniture">房源配套：{{ house.house_furnitures }}</span><br/>#}
+            </div>
+            <div id="detail_right">
+                <p id="moredetail">
+                    <span><a href="#">查看更多信息</a></span>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+<script>
+    window.onload = function(){
+        var selectCity = document.getElementById('selectcity');
+        var selectDistrict = document.getElementById('selectdistrict').getElementsByTagName('option');
+        var selectGroup = document.getElementById('selectdistrict').getElementsByTagName('optgroup')[0];
+        var selectOptionLength = selectDistrict.length;
+        const gzDistrict = ["天河","海珠","越秀","番禺","白云","荔湾","黄埔","花都","增城"];
+        const szDistrict = ["南山区","宝安区","福田区","罗湖区","龙华区","龙岗区"];
+        const bjDistrict = ["东城","西城","朝阳","海淀","丰台","石景山"
+                            ,"通州","昌平","大兴","顺义","房山","门头沟","亦庄开发区"];
+        const hzDistrict = ["上城","下城","下沙","余杭","拱墅","江干","滨江","萧山","西湖"];
+        const shDistrict = ["徐汇","闵行","浦东","闸北","嘉定","松江南","普陀","虹口","长宁",
+                            "宝山","静安","杨浦","黄浦","青浦"];
+        selectCity.onclick = function(){
+            var city = selectCity.value;
+            switch(city){
+                case '广州':
+                    {#   补全option  #}
+                    selectDistrict = document.getElementById('selectdistrict').getElementsByTagName('option');
+                    if(selectDistrict.length<gzDistrict.length){
+                        for(i=selectDistrict.length;i<gzDistrict.length;i++){
+                            var addGZChildMsg = '[GZ]Add option' + i;
+                            console.log(addGZChildMsg);
+                            var gzOption = document.createElement('option');
+                            selectGroup.appendChild(gzOption);
+                        }
+                    }
+                    {#   删除多余option  #}
+                    else if(selectDistrict.length>gzDistrict.length){
+                        console.log('[GZ]Remove spare options');
+                        selectOptionLength = selectDistrict.length;
+                        for(i=selectOptionLength-1;i>gzDistrict.length-1;i--){
+                        var removeGZChildMsg = '[GZ]Remove option' + i;
+                        console.log(removeGZChildMsg);
+                        selectGroup.removeChild(selectDistrict[i]);
+                        }
+                    }
+                    else{
+                        var GZMsg = '[GZ]:Options length' + selectDistrict.length;
+                        console.log(GZMsg);
+                    }
+                    for(i=0;i<gzDistrict.length;i++){
+                        selectDistrict[i].innerText = gzDistrict[i];
+                    }
+                    break;
+
+                case '深圳':
+                {#   删除多余option  #}
+                    selectDistrict = document.getElementById('selectdistrict').getElementsByTagName('option');
+                    selectOptionLength = selectDistrict.length;
+                    for(i=selectOptionLength-1;i>szDistrict.length-1;i--){
+                        var removeSZChildMsg = '[SZ]Remove option' + i;
+                        console.log(removeSZChildMsg);
+                        selectGroup.removeChild(selectDistrict[i]);
+                    }
+                    for(i=0;i<szDistrict.length;i++){
+                            selectDistrict[i].innerText = szDistrict[i];
+                        }
+                    break;
+
+                case '上海':
+                    {#   补全option  #}
+                    selectDistrict = document.getElementById('selectdistrict').getElementsByTagName('option');
+                    if(selectDistrict.length<shDistrict.length){
+                        for(i=selectDistrict.length;i<shDistrict.length;i++){
+                            var addSHChildMsg = '[SH]Add option' + i;
+                            console.log(addSHChildMsg);
+                            var shOption = document.createElement('option');
+                            selectGroup.appendChild(shOption);
+                        }
+                    }
+                    for(i=0;i<shDistrict.length;i++){
+                        selectDistrict[i].innerText = shDistrict[i];
+                    }
+                    break;
+
+                case '北京':
+                    {#   补全option  #}
+                    if(selectDistrict.length<bjDistrict.length){
+                        for(i=selectDistrict.length;i<bjDistrict.length;i++){
+                            var addBJChildMsg = '[BJ]Add option' + i;
+                            console.log(addBJChildMsg);
+                            var bjOption = document.createElement('option');
+                            selectGroup.appendChild(bjOption);
+                        }
+                    }
+                    {#   删除多余option  #}
+                     else if(selectDistrict.length>bjDistrict.length){
+                        console.log('[BJ]Remove spare options');
+                        selectOptionLength = selectDistrict.length;
+                        for(i=selectOptionLength-1;i>bjDistrict.length-1;i--){
+                        var removeBJChildMsg = '[BJ]Remove option' + i;
+                        console.log(removeBJChildMsg);
+                        selectGroup.removeChild(selectDistrict[i]);
+                        }
+                    }
+                    else{
+                        var BJMsg = '[BJ]:Options length' + selectDistrict.length;
+                        console.log(BJMsg);
+                    }
+                    for(i=0;i<bjDistrict.length;i++){
+                        selectDistrict[i].innerText = bjDistrict[i];
+                    }
+                    break;
+
+                case '杭州':
+                    {#   补全option  #}
+                    selectDistrict = document.getElementById('selectdistrict').getElementsByTagName('option');
+                    if(selectDistrict.length<hzDistrict.length){
+                        for(i=selectDistrict.length;i<hzDistrict.length;i++){
+                            var addHZChildMsg = '[HZ]Add option' + i;
+                            console.log(addHZChildMsg);
+                            var hzOption = document.createElement('option');
+                            selectGroup.appendChild(hzOption);
+                        }
+                    }
+                    {#   删除多余option  #}
+                    else if(selectDistrict.length>hzDistrict.length){
+                        console.log('[GZ]Remove spare options');
+                        selectOptionLength = selectDistrict.length;
+                        for(i=selectOptionLength-1;i>hzDistrict.length-1;i--){
+                        var removeHZChildMsg = '[HZ]Remove option' + i;
+                        console.log(removeHZChildMsg);
+                        selectGroup.removeChild(selectDistrict[i]);
+                        }
+                    }
+                    else{
+                        var HZMsg = '[HZ]:Options length' + selectDistrict.length;
+                        console.log(HZMsg);
+                    }
+                    for(i=0;i<hzDistrict.length;i++){
+                        selectDistrict[i].innerText = hzDistrict[i];
+                    }
+                    break;
+{#                default:#}
+{#                    break;#}
+            }
+        };
+
+    }
+</script>
+</html>
